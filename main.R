@@ -45,7 +45,7 @@ L5ext <- dropLayer(L5ext, 1)
 
 # Assign NA values to cloud-covered pixels in stack.
 L8proc <- overlay(x = L8ext, y = L8cloud, fun = CloudMask)
-L5proc <- overlay(x = L5ext, y - L5cloud, fun = CloudMask)
+L5proc <- overlay(x = L5ext, y = L5cloud, fun = CloudMask)
 
 ## Calculate change in NDVI.
 
