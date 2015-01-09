@@ -29,7 +29,7 @@ L5files <- list.files('data/LT51980241990098-SC20150107121947/', pattern = glob2
 L8stack <- stack(L8files[c(1,5,6)])
 L5stack <- stack(L5files[c(1,6,7)])
 
-# # Intermediate check: Stack individual band plots.
+# # Check: Stack individual band plots.
 # plot(L8stack[[1]])
 # plot(L8stack[[2]])
 # plot(L8stack[[3]])
