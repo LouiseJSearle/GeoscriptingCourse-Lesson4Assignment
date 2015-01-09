@@ -1,4 +1,5 @@
-## Louise Searle
+## Team Jennifer
+## Jeroen Roelofs & Louise Searle
 ## January 08 2015
 
 ## Load source packages and functions.
