@@ -14,6 +14,7 @@ source('R/CalcNDVI.R')
 source('R/CloudMask.R')
 
 ## Load Landsat data.
+dir.create('data/')
 
 # Download data from source.
 download('https://www.dropbox.com/s/i1ylsft80ox6a32/LC81970242014109-SC20141230042441.tar.gz?dl=0', "data/LC81970242014109-SC20141230042441.tar", quiet = T, mode = "wb")
@@ -79,13 +80,13 @@ NDVIchange <- suppressWarnings(NDVI1990 - NDVI2014)
 NDVIchproj <- projectRaster(NDVIchange, crs='+proj=longlat')
 
 # Set output working directory.
-setwd('outputs/')
+dir.create('outputs/')
 
 # Create KML ouput file for visualising result in GoogleEarth.
-KML(x=NDVIchproj, filename='NDVIchange.kml')
+KML(x=NDVIchproj, filename='outputs/NDVIchange.kml')
 
 # Create GRD output file for further analysis in Rstudio.
-writeRaster(NDVIchproj, filename='NDVIchange.grd', datatype='INT2S', overwrite = T)
+writeRaster(NDVIchproj, filename='outputs/NDVIchange.grd', datatype='INT2S', overwrite = T)
 
 
 
