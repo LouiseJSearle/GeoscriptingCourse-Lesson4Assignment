@@ -85,7 +85,7 @@ setwd('outputs/')
 KML(x=NDVIchproj, filename='NDVIchange.kml')
 
 # Create GRD output file for further analysis in Rstudio.
-writeRaster(NDVIchproj, filename='NDVIchange.grd', datatype='INT2S')
+writeRaster(NDVIchproj, filename='NDVIchange.grd', datatype='INT2S', overwrite = T)
 
 
 
