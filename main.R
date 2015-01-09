@@ -83,7 +83,7 @@ NDVIchproj <- projectRaster(NDVIchange, crs='+proj=longlat')
 dir.create('outputs/')
 
 # Create KML ouput file for visualising result in GoogleEarth.
-KML(x=NDVIchproj, filename='outputs/NDVIchange.kml')
+KML(x=NDVIchproj, filename='outputs/NDVIchange.kml', overwrite = T)
 
 # Create GRD output file for further analysis in Rstudio.
 writeRaster(NDVIchproj, filename='outputs/NDVIchange.grd', datatype='INT2S', overwrite = T)
