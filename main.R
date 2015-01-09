@@ -37,21 +37,17 @@ L5stack <- stack(L5files[c(1,6,7)])
 
 ## Pre-process Landsat data.
 
-# Extent cropping.
-L8ext <- intersect(L8stack, L5stack)
-L5ext <- intersect(L5stack, L8stack)
-
 # Cloud layer extraction from stack.
-L8cloud <- L8ext[[1]]
-L5cloud <- L5ext[[1]]
+L8cloud <- L8stack[[1]]
+L5cloud <- L5stack[[1]]
 
 # Drop cloud layer from stack.
-L8ext <- dropLayer(L8ext, 1)
-L5ext <- dropLayer(L5ext, 1)
+L8stack <- dropLayer(L8stack, 1)
+L5stack <- dropLayer(L5stack, 1)
 
 # Assign NA values to cloud-covered pixels in stack.
-L8proc <- overlay(x = L8ext, y = L8cloud, fun = CloudMask)
-L5proc <- overlay(x = L5ext, y = L5cloud, fun = CloudMask)
+L8proc <- overlay(x = L8stack, y = L8cloud, fun = CloudMask)
+L5proc <- overlay(x = L5stack, y = L5cloud, fun = CloudMask)
 
 # # Check: Cloud removed stack plots.
 # plot(L8proc[[1]])
@@ -68,7 +64,10 @@ NDVI1990 <- overlay(L5proc[[1]], L5proc[[2]], fun=CalcNDVI)
 # plot(NDVI1990)
 
 # Temporal NDVI comparison.
-NDVIchange <- NDVI1990 - NDVI2014
+# Warning suppressed.
+# Warning message: Raster objects have different extents. Result for their intersection is returned.
+# This is not a problem. This result is desireable as it allows the removal of earlier extent functions, increasing efficiency.
+NDVIchange <- suppressWarnings(NDVI1990 - NDVI2014)
 
 # # Check: NDVI change plot.
 # plot(NDVIchange)
